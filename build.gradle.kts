@@ -1,4 +1,5 @@
 plugins {
+    jacoco
     `kotlin-dsl`
     `maven-publish`
     kotlin("jvm") version libs.versions.kotlinJvm.get()
@@ -29,6 +30,16 @@ gradlePlugin {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(tasks.jacocoTestReport)
+}
+
+tasks.jacocoTestReport {
+    enabled = true
+    reports {
+        xml.required = true
+        html.required = true
+    }
+    dependsOn(tasks.test)
 }
 
 kotlin {
