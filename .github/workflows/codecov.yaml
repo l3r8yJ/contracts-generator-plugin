@@ -22,6 +22,7 @@ jobs:
       - name: Execute Gradle build
         run: ./gradlew clean build --no-build-cache -i
       - uses: codecov/codecov-action@v3
+        run: ls -a
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           files: ./build/reports/jacoco/jacocoTestReport.xml
