@@ -1,0 +1,11 @@
+architect:
+  - l3r8yJ
+merge:
+  script:
+    - "./gradlew clean build --no-build-cache -i"
+release:
+  pre: false
+  script: |-
+    [[ "${tag}" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]] || exit -1
+    git commit -am "${tag}"
+    # add your release pipeline

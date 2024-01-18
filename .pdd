@@ -1,0 +1,4 @@
+--source=.
+--verbose
+--exclude build/**
+--rule min-words:20
